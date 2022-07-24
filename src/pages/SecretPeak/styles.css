@@ -1,0 +1,91 @@
+.secret-peak__wrapper {
+    background: transparent;
+    box-sizing: border-box;
+    overflow: auto;
+    max-width: auto;
+    height: 86vh;
+    max-width: 1210px;
+    margin: auto;
+}
+
+.secret-peak {
+    background: url('../../assets/img/secret_peak_map.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-bottom: 62%;
+
+    position: relative;
+}
+
+.mobile-advice {
+    display: none;
+}
+
+.secret-peak__timer--small-left-boss {
+    position: absolute;
+    top: 59%;
+    left: 38%;
+}
+
+.secret-peak__timer--small-left-up-boss {
+    position: absolute;
+    top: 36%;
+    left: 32%;
+}
+
+.secret-peak__timer--small-north-boss {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+}
+
+.secret-peak__timer--small-right-boss {
+    position: absolute;
+    top: 74%;
+    left: 73%;
+}
+
+.secret-peak__timer--medium-left-boss {
+    position: absolute;
+    left: 27%;
+    top: 67%;
+}
+
+.secret-peak__timer--medium-right-boss {
+    position: absolute;
+    left: 71%;
+    top: 43%;
+}
+
+.secret-peak__timer--big-north-boss {
+    position: absolute;
+    left: 67%;
+    top: 21%;
+}
+
+.secret-peak__timer--big-south-boss {
+    position: absolute;
+    left: 27%;
+    top: 86%;
+}
+
+@media(max-width: 1024px) {
+    .mobile-advice {
+        display: block;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mobile-advice h3 {
+        color: white;
+        text-align: center;
+    }
+
+    .secret-peak__wrapper {
+        display: none;
+    }
+}

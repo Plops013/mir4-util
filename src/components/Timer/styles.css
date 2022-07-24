@@ -1,0 +1,92 @@
+.timer__wrapper {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  padding: 8px 6px;
+  padding-right: 16px;
+  min-height: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border: 2px solid white;
+
+  animation-name: growToRight;
+  animation-duration: 0.26s;
+  overflow: hidden;
+}
+
+@keyframes growToRight {
+  from {
+    max-width: 48px;
+  }
+  to {
+    max-width: 126px;
+  }
+}
+
+@keyframes shrinkToLeft {
+  from {
+    min-width: 126px;
+  }
+  to {
+    min-width: 48px;
+  }
+}
+
+.timer {
+  font-weight: bold;
+  font-size: 18px;
+  background-color: transparent;
+  max-width: 100px;
+  text-align: center;
+  border: none;
+  color: white;
+}
+
+.boss-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.8);
+  animation-name: shrinkToLeft;
+  animation-duration: 0.25s;
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.boss--SMALL {
+  background-color: rgba(31, 149, 134, 0.8);
+}
+
+.boss--MEDIUM {
+  background-color: rgba(177, 125, 51, 0.8);
+}
+
+.boss--BIG {
+  background-color: rgba(203, 83, 57, 0.8);
+}
+
+.time-ending {
+  border-color: red;
+  animation-name: blink;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  border-width: 4px;
+}
+
+@keyframes blink {
+  0% {
+    border-color: red;
+  }
+  50% {
+    border-color: rgba(177, 125, 51, 1);
+  }
+  100% {
+    border-color: red;
+  }
+}
