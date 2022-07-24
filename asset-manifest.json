@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/mir4-util/static/css/main.557e3611.css",
+    "main.js": "/mir4-util/static/js/main.544ed343.js",
+    "static/js/787.e9a1181f.chunk.js": "/mir4-util/static/js/787.e9a1181f.chunk.js",
+    "static/media/secret_peak_map.png": "/mir4-util/static/media/secret_peak_map.4d9dc0808aec3c05b8c9.png",
+    "static/media/alarm.mp3": "/mir4-util/static/media/alarm.913e49f3079586091133.mp3",
+    "index.html": "/mir4-util/index.html",
+    "main.557e3611.css.map": "/mir4-util/static/css/main.557e3611.css.map",
+    "main.544ed343.js.map": "/mir4-util/static/js/main.544ed343.js.map",
+    "787.e9a1181f.chunk.js.map": "/mir4-util/static/js/787.e9a1181f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.557e3611.css",
+    "static/js/main.544ed343.js"
+  ]
+}
