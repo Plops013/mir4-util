@@ -1,18 +1,17 @@
-import {
-  HashRouter,
-  Route,
-  Routes
-} from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import Header from "../components/Header";
 import SecreatPeak from "../pages/SecretPeak";
 
 export default function MainRouter() {
-    return (
-      <HashRouter basename="mir4-util">
-          <Routes>
-            <Route path="/secret-peak" exact element={<SecreatPeak />} />
-            <Route path="/" exact element={<SecreatPeak />} />
-          </Routes>
-      </HashRouter>
-    );
-  }
-  
+  return (
+    <HashRouter>
+      <Header />
+      <div class="content">
+        <Routes>
+          <Route path="/secret-peak" exact element={<SecreatPeak />} />
+          <Route path="/" exact element={<SecreatPeak />} />
+        </Routes>
+      </div>
+    </HashRouter>
+  );
+}

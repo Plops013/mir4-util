@@ -1,14 +1,10 @@
-import './App.css';
-import Header from './components/Header';
-import MainRouter from './router/MainRouter';
+import "./App.css";
+import MainRouter from "./router/MainRouter";
 
 function App() {
   return (
-    <div className='wrapper'>
-      <Header />
-      <div class="content">
-        <MainRouter/>
-      </div>
+    <div className="wrapper">
+      <MainRouter />
     </div>
   );
 }
