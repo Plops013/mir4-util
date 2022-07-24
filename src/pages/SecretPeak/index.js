@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Timer from "../../components/Timer";
 import { convertMsToTime, parseTime } from "../../utils";
 import "./styles.css";
+import image from '../../assets/img/secret_peak_map.png'
 
 export default function SecreatPeak() {
   const [southBoss, setSouthBoss] = useState();
@@ -53,6 +54,7 @@ export default function SecreatPeak() {
       </div>
       <div className="secret-peak__wrapper">
         <div className="secret-peak">
+        <img alt="Secret Peak Map" src={image} />
           <div className="secret-peak__timer--small-left-boss">
             <Timer initialMinute={30} />
           </div>
