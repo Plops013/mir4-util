@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Timer from "../../components/Timer";
+import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { convertMsToTime, parseTime } from "../../utils";
+import Timer from "../../components/Timer";
 import "./styles.css";
-import image from '../../assets/img/secret_peak_map.png'
+import image from "../../assets/img/secret_peak_map.png";
 
 export default function SecreatPeak() {
   const [southBoss, setSouthBoss] = useState();
   const [northBoss, setNorthBoss] = useState();
+  const [isSoundActive, setIsSoundActive] = useState(true);
 
   const bigBossSpawn = {
     south: ["13:00:00", "19:00:00", "01:00:00", "07:00:00"],
@@ -54,41 +56,86 @@ export default function SecreatPeak() {
       </div>
       <div className="secret-peak__wrapper">
         <div className="secret-peak">
-        <img alt="Secret Peak Map" src={image} />
+          <img alt="Secret Peak Map" src={image} />
+          <div className="sound-control">
+            {isSoundActive ? (
+              <FaVolumeUp
+                onClick={() => setIsSoundActive(false)}
+                size={32}
+                color="white"
+              />
+            ) : (
+              <FaVolumeMute
+                onClick={() => setIsSoundActive(true)}
+                size={30}
+                color="white"
+              />
+            )}
+          </div>
           <div className="secret-peak__timer--small-left-boss">
-            <Timer initialMinute={30} />
+            <Timer
+              isSoundActive={isSoundActive}
+              initialMinute={30}
+              audio="uma_merda"
+            />
           </div>
           <div class="secret-peak__timer--small-left-up-boss">
-            <Timer initialMinute={30} />
+            <Timer
+              isSoundActive={isSoundActive}
+              initialMinute={30}
+              audio="uma_merda"
+            />
           </div>
           <div class="secret-peak__timer--small-north-boss">
-            <Timer initialMinute={30} />
+            <Timer
+              isSoundActive={isSoundActive}
+              initialMinute={30}
+              audio="uma_merda"
+            />
           </div>
           <div class="secret-peak__timer--small-right-boss">
-            <Timer initialMinute={30} />
+            <Timer
+              isSoundActive={isSoundActive}
+              initialMinute={30}
+              audio="uma_merda"
+            />
           </div>
           <div class="secret-peak__timer--medium-left-boss">
-            <Timer initialMinute={60} type="MEDIUM" />
+            <Timer
+              isSoundActive={isSoundActive}
+              initialMinute={60}
+              type="MEDIUM"
+              audio="maneirinho"
+            />
           </div>
           <div class="secret-peak__timer--medium-right-boss">
-            <Timer initialMinute={60} type="MEDIUM" />
+            <Timer
+              isSoundActive={isSoundActive}
+              initialMinute={60}
+              type="MEDIUM"
+              audio="mais_ou_menos"
+            />
           </div>
           <div class="secret-peak__timer--big-north-boss">
             <Timer
+              isSoundActive={isSoundActive}
               initialHours={northBoss?.hours ?? 0}
               initialMinute={northBoss?.minutes ?? 0}
               initialSeconds={northBoss?.seconds ?? 0}
               initiated={true}
               type="BIG"
+              audio="elite"
             />
           </div>
           <div class="secret-peak__timer--big-south-boss">
             <Timer
+              isSoundActive={isSoundActive}
               initialHours={southBoss?.hours ?? 0}
               initialMinute={southBoss?.minutes ?? 0}
               initialSeconds={southBoss?.seconds ?? 0}
               initiated={true}
               type="BIG"
+              audio="gigante"
             />
           </div>
         </div>

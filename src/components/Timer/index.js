@@ -1,8 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { FaSkull, FaWindowClose } from "react-icons/fa";
+import { FaSkull, FaVolumeUp } from "react-icons/fa";
 import { BiX } from "react-icons/bi";
 import "./styles.css";
-import sound from "../../assets/sound/alarm.mp3";
+import uma_merda from "../../assets/sound/uma_merda.mp3";
+import maneirinho from "../../assets/sound/maneirinho.mp3";
+import elite from "../../assets/sound/elite.mp3";
+import gigante from "../../assets/sound/gigante.mp3";
+import mais_ou_menos from "../../assets/sound/mais_ou_menos.mp3";
 
 export default function Timer({
   initialHours = 0,
@@ -10,6 +14,8 @@ export default function Timer({
   initialSeconds = 0,
   type = "SMALL",
   initiated,
+  audio,
+  isSoundActive,
 }) {
   const BOSS_COLOR = {
     SMALL: "#1f9586",
@@ -17,11 +23,20 @@ export default function Timer({
     BIG: "#cb5339",
   };
 
+  const AUDIO_BIND = {
+    uma_merda,
+    maneirinho,
+    gigante,
+    elite,
+    mais_ou_menos,
+  };
+
   // Timer value in ms
   const [hasBeenTracked, setHasBeenTracked] = useState(false);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
+  const [soundPlaying, setSoundPlaying] = useState(false);
 
   const triggerTimer = useCallback(() => {
     setHasBeenTracked(true);
@@ -31,9 +46,17 @@ export default function Timer({
   }, [initialHours, initialMinute, initialSeconds]);
 
   const playAudio = useCallback(() => {
-    let audio = new Audio(sound);
-    audio.play();
-  }, []);
+    console.log(isSoundActive);
+    if (isSoundActive) {
+      let sound = new Audio(AUDIO_BIND[audio]);
+      sound.play();
+      setSoundPlaying(true);
+      const soundInterval = setInterval(() => {
+        setSoundPlaying(false);
+        clearInterval(soundInterval);
+      }, 5000);
+    }
+  }, [isSoundActive]);
 
   useEffect(() => {
     if (initiated) triggerTimer();
@@ -43,7 +66,10 @@ export default function Timer({
     let myInterval = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
-        if (minutes === 0 && hours === 0 && seconds === 59) {
+        if (type === "BIG" && minutes === 4 && hours === 0 && seconds === 58) {
+          playAudio();
+        }
+        if (minutes === 0 && hours === 0 && seconds === 58) {
           playAudio();
         }
       }
@@ -56,7 +82,7 @@ export default function Timer({
                 clearInterval(myInterval2);
                 setHours(5);
                 setMinutes(59);
-                setMinutes(30);
+                setSeconds(30);
               }, 30000);
             }
             clearInterval(myInterval);
@@ -92,11 +118,15 @@ export default function Timer({
   }
 
   function timeIsEnding() {
-    return minutes === 0 && hours === 0 && seconds < 59;
+    if (type === "BIG") {
+      return minutes < 5 && hours === 0 && seconds < 59;
+    } else {
+      return minutes === 0 && hours === 0 && seconds < 59;
+    }
   }
 
   return (
-    <div>
+    <div class="timer__container">
       {isBossAlive() ? (
         <div onClick={triggerTimer} className="boss-button">
           <FaSkull
@@ -133,6 +163,9 @@ export default function Timer({
             color="white"
           />
         </div>
+      )}
+      {soundPlaying && (
+        <FaVolumeUp className="sound-alert" size={32} color="white" />
       )}
     </div>
   );

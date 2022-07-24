@@ -74,6 +74,12 @@
     top: 86%;
 }
 
+.sound-control {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+}
+
 @media(max-width: 1024px) {
     .mobile-advice {
         display: block;
