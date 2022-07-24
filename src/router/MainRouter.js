@@ -1,19 +1,18 @@
 import {
-  HashRouter as Router,
+  HashRouter,
   Route,
-  Link,
   Routes
 } from "react-router-dom";
 import SecreatPeak from "../pages/SecretPeak";
 
 export default function MainRouter() {
     return (
-      <Router>
+      <HashRouter basename="mir4-util">
           <Routes>
-            <Route path="/mir4-util/secret-peak" exact element={<SecreatPeak />} />
-            <Route path="/mir4-util" exact element={<SecreatPeak />} />
+            <Route path="/secret-peak" exact element={<SecreatPeak />} />
+            <Route path="/" exact element={<SecreatPeak />} />
           </Routes>
-      </Router>
+      </HashRouter>
     );
   }
   
