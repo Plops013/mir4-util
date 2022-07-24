@@ -10,8 +10,8 @@ export default function MainRouter() {
     return (
       <Router>
           <Routes>
-            <Route path="/secreat-peak" element={<SecreatPeak />} />
-            <Route path="/" element={<SecreatPeak />} />
+            <Route path="/mir4-util/secret-peak" exact element={<SecreatPeak />} />
+            <Route path="/mir4-util" exact element={<SecreatPeak />} />
           </Routes>
       </Router>
     );

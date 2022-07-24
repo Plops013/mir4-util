@@ -25,7 +25,7 @@ export default function Header() {
       <h5 className="header__subtitle">{dayMessage()}</h5>
       <ul className="header__navigation">
         <li className="header__link">
-          <a href="secreat-peak">PICO SECRETO</a>
+          <a href="secret-peak">PICO SECRETO</a>
         </li>
         <li className="header__link">
           <a rel="noreferrer" target='_blank' href="https://forms.gle/pzbdwWwtiDMa4BE68">SUGESTÕES</a>
