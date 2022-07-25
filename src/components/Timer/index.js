@@ -46,7 +46,6 @@ export default function Timer({
   }, [initialHours, initialMinute, initialSeconds]);
 
   const playAudio = useCallback(() => {
-    console.log(isSoundActive);
     if (isSoundActive) {
       let sound = new Audio(AUDIO_BIND[audio]);
       sound.play();

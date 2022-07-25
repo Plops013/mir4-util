@@ -1,8 +1,6 @@
 header {
     background-color: rgba(255, 255, 255, 0.2);
     padding: 0.8rem 4rem;
-    border-bottom-left-radius: 60px;
-    border-bottom-right-radius: 60px;
 }
 
 .header__title {
