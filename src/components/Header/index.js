@@ -45,6 +45,11 @@ export default function Header() {
       </div>
       <div>
         <ul className="header__navigation">
+          <li className={`header__link ${isLinkActive('home') ? 'active' : ''}`}>
+            <a onClick={(e) => goToPath("/home", e)} href="#secret-peak">
+              Home
+            </a>
+          </li>
           <li className={`header__link ${isLinkActive('secret-peak') ? 'active' : ''}`}>
             <a onClick={(e) => goToPath("/secret-peak", e)} href="#secret-peak">
               Pico Secreto

@@ -28,7 +28,9 @@ export default function SecreatPeak() {
     for (let i = 0; i < bossSpawnTimes.length; i++) {
       let parsedTime = parseTime(bossSpawnTimes[i]);
       if (parsedTime.getHours() === 1 || parsedTime.getHours() === 4) {
-        parsedTime.setDate(parsedTime.getDate() + 1);
+        if (now.getHours > 4) {
+          parsedTime.setDate(parsedTime.getDate() + 1);
+        }
       }
 
       if (parsedTime > now) {
