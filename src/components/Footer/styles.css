@@ -1,0 +1,19 @@
+.footer {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-top: 3px solid rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 0.6rem 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__message {
+    color: #fff;
+    font-weight: 900;
+    line-height: 1;
+    font-size: 0.8rem;
+    text-align: center;
+    width: fit-content;
+}

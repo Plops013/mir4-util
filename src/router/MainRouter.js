@@ -1,5 +1,7 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
+import NotFound from "../pages/NotFound";
 import SecreatPeak from "../pages/SecretPeak";
 
 export default function MainRouter() {
@@ -10,8 +12,10 @@ export default function MainRouter() {
         <Routes>
           <Route path="/secret-peak" exact element={<SecreatPeak />} />
           <Route path="/" exact element={<SecreatPeak />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
+      <Footer />
     </HashRouter>
   );
 }

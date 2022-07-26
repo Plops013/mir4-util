@@ -1,0 +1,22 @@
+.not-found__title {
+    color: white;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.not-found__message {
+    color: white;
+}
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 100%;
+}
+
+.not-found__404 {
+    margin-left: 1rem;
+}

@@ -4,7 +4,7 @@ import "./styles.css";
 
 export default function Header() {
   const [dayOfWeek, setDayOfWeek] = useState();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const now = new Date();
@@ -24,22 +24,46 @@ export default function Header() {
   function goToPath(path, event) {
     event.preventDefault();
     event.stopPropagation();
-    navigate(path)
+    navigate(path);
+  }
+
+  function isLinkActive(link) {
+    return window?.location?.href?.includes(link);
   }
 
   return (
     <header>
-      <h1 className="header__title">Mir4 Note</h1>
-      <h5 className="header__subtitle">{dayMessage()}</h5>
-      <ul className="header__navigation">
-        <li className="header__link">
-          <a onClick={(e) => goToPath('/secret-peak', e)} href="#1">PICO SECRETO</a>
-        </li>
-        <li className="header__link">
-          <a rel="noreferrer" target='_blank' href="https://forms.gle/pzbdwWwtiDMa4BE68">SUGESTÕES</a>
-        </li>
-      </ul>
-      <p className="app-version">V0.1</p>
+      <div>
+        <h1
+          onClick={(e) => goToPath("/", e)}
+          href="#home"
+          className="header__title"
+        >
+          Mir4 Note
+        </h1>
+        <h5 className="header__subtitle">{dayMessage()}</h5>
+      </div>
+      <div>
+        <ul className="header__navigation">
+          <li className={`header__link ${isLinkActive('secret-peak') ? 'active' : ''}`}>
+            <a onClick={(e) => goToPath("/secret-peak", e)} href="#secret-peak">
+              Pico Secreto
+            </a>
+          </li>
+          <li className="header__link">
+            <a
+              rel="noreferrer"
+              target="_blank"
+              href="https://forms.gle/pzbdwWwtiDMa4BE68"
+            >
+              Sugestões
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p className="app-version">V0.1</p>
+      </div>
     </header>
   );
 }

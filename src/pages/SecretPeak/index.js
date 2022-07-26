@@ -55,6 +55,7 @@ export default function SecreatPeak() {
         </h3>
       </div>
       <div className="secret-peak__wrapper">
+        <h1 class="page-title">Pico Secreto</h1>
         <div className="secret-peak">
           <img alt="Secret Peak Map" src={image} />
           <div className="sound-control">
