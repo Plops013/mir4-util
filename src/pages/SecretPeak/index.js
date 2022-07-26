@@ -58,6 +58,7 @@ export default function SecreatPeak() {
       </div>
       <div className="secret-peak__wrapper">
         <h1 class="page-title">Pico Secreto</h1>
+        <h1 class="page-title">Atenção! track do pico não funciona em segundo plano, estamos trabalhando para corrigir</h1>
         <div className="secret-peak">
           <img alt="Secret Peak Map" src={image} />
           <div className="sound-control">
