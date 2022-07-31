@@ -21,13 +21,6 @@ section {
     padding-bottom: 24px;
 }
 
-.title {
-    color: white;
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-}
-
 .welcome {
     display: flex;
     justify-content: center;

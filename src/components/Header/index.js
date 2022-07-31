@@ -55,6 +55,11 @@ export default function Header() {
               Pico Secreto
             </a>
           </li>
+          <li className={`header__link ${isLinkActive('kda') ? 'active' : ''}`}>
+            <a onClick={(e) => goToPath("/kda", e)} href="#kda">
+              Calculadora KDA
+            </a>
+          </li>
           <li className="header__link">
             <a
               rel="noreferrer"

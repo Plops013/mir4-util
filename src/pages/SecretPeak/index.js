@@ -57,8 +57,8 @@ export default function SecreatPeak() {
         </h3>
       </div>
       <div className="secret-peak__wrapper">
-        <h1 class="page-title">Pico Secreto</h1>
-        <h1 class="page-title">Atenção! track do pico não funciona em segundo plano, estamos trabalhando para corrigir</h1>
+        <h1 className="page-title">Pico Secreto</h1>
+        <h1 className="page-title">Atenção! track do pico não funciona em segundo plano, estamos trabalhando para corrigir</h1>
         <div className="secret-peak">
           <img alt="Secret Peak Map" src={image} />
           <div className="sound-control">
@@ -79,69 +79,11 @@ export default function SecreatPeak() {
           <div className="secret-peak__timer--small-left-boss">
             <Timer
               isSoundActive={isSoundActive}
-              initialMinute={30}
+              initialSeconds={7}
               audio="uma_merda"
             />
           </div>
-          <div class="secret-peak__timer--small-left-up-boss">
-            <Timer
-              isSoundActive={isSoundActive}
-              initialMinute={30}
-              audio="uma_merda"
-            />
-          </div>
-          <div class="secret-peak__timer--small-north-boss">
-            <Timer
-              isSoundActive={isSoundActive}
-              initialMinute={30}
-              audio="uma_merda"
-            />
-          </div>
-          <div class="secret-peak__timer--small-right-boss">
-            <Timer
-              isSoundActive={isSoundActive}
-              initialMinute={30}
-              audio="uma_merda"
-            />
-          </div>
-          <div class="secret-peak__timer--medium-left-boss">
-            <Timer
-              isSoundActive={isSoundActive}
-              initialMinute={60}
-              type="MEDIUM"
-              audio="maneirinho"
-            />
-          </div>
-          <div class="secret-peak__timer--medium-right-boss">
-            <Timer
-              isSoundActive={isSoundActive}
-              initialMinute={60}
-              type="MEDIUM"
-              audio="mais_ou_menos"
-            />
-          </div>
-          <div class="secret-peak__timer--big-north-boss">
-            <Timer
-              isSoundActive={isSoundActive}
-              initialHours={northBoss?.hours ?? 0}
-              initialMinute={northBoss?.minutes ?? 0}
-              initialSeconds={northBoss?.seconds ?? 0}
-              initiated={true}
-              type="BIG"
-              audio="elite"
-            />
-          </div>
-          <div class="secret-peak__timer--big-south-boss">
-            <Timer
-              isSoundActive={isSoundActive}
-              initialHours={southBoss?.hours ?? 0}
-              initialMinute={southBoss?.minutes ?? 0}
-              initialSeconds={southBoss?.seconds ?? 0}
-              initiated={true}
-              type="BIG"
-              audio="gigante"
-            />
-          </div>
+
         </div>
       </div>
     </div>

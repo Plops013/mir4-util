@@ -6,9 +6,10 @@ import "./styles.css";
 import mapPeak from "../../assets/img/secret_peak_map_thumb.png";
 import magicSquare from "../../assets/img/magic_square.png";
 import mir4 from "../../assets/img/mir4.jpg";
+import clan from "../../assets/img/clan.jpg";
+import epicItem from "../../assets/img/epic_item.png";
 
 export default function Home() {
-
   const navigate = useNavigate();
 
   function goToPath(path, event) {
@@ -36,13 +37,29 @@ export default function Home() {
             image={mapPeak}
             title={"Pico Secreto"}
             text={"Track de time dos bosses do pico secreto."}
-            onClick={(e) => goToPath('/secret-peak', e)}
+            onClick={(e) => goToPath("/secret-peak", e)}
+          />
+          <FeatureCard
+            image={clan}
+            title={"Calculadora de KDA"}
+            text={
+              "Ferramentas para te ajudar a entender em qual posição você está no seu clã"
+            }
+            onClick={(e) => goToPath("/kda", e)}
           />
           <FeatureCard
             disabled={true}
             image={magicSquare}
             title={"Praça Magica"}
             text={"Ferramentas para te ajudar com a praça magica."}
+          />
+          <FeatureCard
+            disabled={true}
+            image={epicItem}
+            title={"Calculadora de Itens"}
+            text={
+              "Ferramentas para te ajudar a calcular quanto de material, dark steel, cobre e pó brilhante faltam para concluir o seu item"
+            }
           />
         </div>
       </section>

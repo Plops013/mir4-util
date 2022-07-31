@@ -7,10 +7,9 @@ import maneirinho from "../../assets/sound/maneirinho.mp3";
 import elite from "../../assets/sound/elite.mp3";
 import gigante from "../../assets/sound/gigante.mp3";
 import mais_ou_menos from "../../assets/sound/mais_ou_menos.mp3";
+import { useAnimationFrame } from "../../hooks/useAnimation";
 
 export default function Timer({
-  initialHours = 0,
-  initialMinute = 0,
   initialSeconds = 0,
   type = "SMALL",
   initiated,
@@ -33,101 +32,66 @@ export default function Timer({
 
   // Timer value in ms
   const [hasBeenTracked, setHasBeenTracked] = useState(false);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(initialSeconds);
   const [soundPlaying, setSoundPlaying] = useState(false);
+  
+  useAnimationFrame((deltaTime) => {
+    setSeconds(seconds - deltaTime);
+  }, playAudio, initialSeconds)
 
-  const triggerTimer = useCallback(() => {
+  function timer() {
     setHasBeenTracked(true);
-    setHours(initialHours);
-    setMinutes(initialMinute);
-    setSeconds(initialSeconds);
-  }, [initialHours, initialMinute, initialSeconds]);
-
-  const playAudio = useCallback(() => {
-    if (isSoundActive) {
-      let sound = new Audio(AUDIO_BIND[audio]);
-      sound.play();
-      setSoundPlaying(true);
-      const soundInterval = setInterval(() => {
-        setSoundPlaying(false);
-        clearInterval(soundInterval);
-      }, 5000);
-    }
-  }, [isSoundActive]);
-
-  useEffect(() => {
-    if (initiated) triggerTimer();
-  }, [initiated, triggerTimer]);
-
-  useEffect(() => {
-    let myInterval = setInterval(() => {
+    const myInterval = setInterval(() => {
       if (seconds > 0) {
+        if (seconds < 59) playAudio();
         setSeconds(seconds - 1);
-        if (type === "BIG" && minutes === 4 && hours === 0 && seconds === 58) {
-          playAudio();
-        }
-        if (minutes === 0 && hours === 0 && seconds === 58) {
-          playAudio();
-        }
       }
-
-      if (seconds === 0) {
-        if (minutes === 0) {
-          if (hours === 0) {
-            if (type === "BIG") {
-              let myInterval2 = setInterval(() => {
-                clearInterval(myInterval2);
-                setHours(5);
-                setMinutes(59);
-                setSeconds(30);
-              }, 30000);
-            }
-            clearInterval(myInterval);
-          } else {
-            setHours(hours - 1);
-            setMinutes(59);
-            setSeconds(59);
-          }
-        } else {
-          setMinutes(minutes - 1);
-          setSeconds(59);
-        }
-      }
+      else clearInterval(myInterval);
     }, 1000);
-    return () => {
-      clearInterval(myInterval);
-    };
-  }, [hours, minutes, playAudio, seconds, type]);
+  }
 
-  function padTime(time) {
-    return String(time).padStart(2, "0");
+  function playAudio() {
+    if (!isSoundActive) return;
+
+    let sound = new Audio(AUDIO_BIND[audio]);
+    sound.play();
+
+    setSoundPlaying(true);
+    const soundInterval = setInterval(() => {
+      setSoundPlaying(false);
+      clearInterval(soundInterval);
+    }, 5000);
+  }
+
+  function translateSecondsToTime(seconds) {
+    if(seconds > 3600) {
+      return new Date(seconds * 1000).toISOString().substr(11, 8);
+    } else {
+      return new Date(seconds * 1000).toISOString().substr(14, 5);
+    }
   }
 
   function isBossAlive() {
-    return minutes <= 0 && seconds <= 0;
+    return seconds < 0;
   }
 
   function clearTimer() {
     setHasBeenTracked(false);
-    setHours(0);
-    setMinutes(0);
     setSeconds(0);
   }
 
   function timeIsEnding() {
     if (type === "BIG") {
-      return minutes < 5 && hours === 0 && seconds < 59;
+      return seconds < 299;
     } else {
-      return minutes === 0 && hours === 0 && seconds < 59;
+      return seconds < 59;
     }
   }
 
   return (
-    <div class="timer__container">
+    <div className="timer__container">
       {isBossAlive() ? (
-        <div onClick={triggerTimer} className="boss-button">
+        <div onClick={timer} className="boss-button">
           <FaSkull
             size={24}
             color={hasBeenTracked ? BOSS_COLOR[type] : "gray"}
@@ -139,21 +103,11 @@ export default function Timer({
             timeIsEnding() ? "time-ending" : ""
           }`}
         >
-          {hours > 0 ? (
-            <input
-              className="timer"
-              value={`${padTime(hours)} : ${padTime(minutes)} : ${padTime(
-                seconds
-              )}`}
-              disabled
-            />
-          ) : (
-            <input
-              className="timer"
-              value={`${padTime(minutes)} : ${padTime(seconds)}`}
-              disabled
-            />
-          )}
+          <input
+            className="timer"
+            value={`${translateSecondsToTime(seconds)}`}
+            disabled
+          />
           <BiX
             className="close-icon"
             style={{ cursor: "pointer" }}
