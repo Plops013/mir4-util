@@ -15,7 +15,7 @@ export default function MainRouter() {
           <Route path="/" exact element={<Home />} />
           <Route path='*' element={<NotFound />} />
           <Route path="/home" exact element={<Home />} />
-          <Route path="/secret-peak" exact element={<SecreatPeak />} />
+          {/* <Route path="/secret-peak" exact element={<SecreatPeak />} /> */}
           <Route path="/kda" exact element={<KDA />} />
         </Routes>
       </div>

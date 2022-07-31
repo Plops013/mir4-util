@@ -34,18 +34,18 @@ export default function Home() {
         <h1 className="title">Novidades</h1>
         <div className="feature-grid">
           <FeatureCard
-            image={mapPeak}
-            title={"Pico Secreto"}
-            text={"Track de time dos bosses do pico secreto."}
-            onClick={(e) => goToPath("/secret-peak", e)}
-          />
-          <FeatureCard
             image={clan}
             title={"Calculadora de KDA"}
             text={
               "Ferramentas para te ajudar a entender em qual posição você está no seu clã"
             }
             onClick={(e) => goToPath("/kda", e)}
+          />
+          <FeatureCard
+            disabled={true}
+            image={mapPeak}
+            title={"Pico Secreto"}
+            text={"Track de time dos bosses do pico secreto."}
           />
           <FeatureCard
             disabled={true}

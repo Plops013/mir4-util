@@ -50,11 +50,11 @@ export default function Header() {
               Home
             </a>
           </li>
-          <li className={`header__link ${isLinkActive('secret-peak') ? 'active' : ''}`}>
+          {/* <li className={`header__link ${isLinkActive('secret-peak') ? 'active' : ''}`}>
             <a onClick={(e) => goToPath("/secret-peak", e)} href="#secret-peak">
               Pico Secreto
             </a>
-          </li>
+          </li> */}
           <li className={`header__link ${isLinkActive('kda') ? 'active' : ''}`}>
             <a onClick={(e) => goToPath("/kda", e)} href="#kda">
               Calculadora KDA

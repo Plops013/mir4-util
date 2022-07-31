@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaSkull, FaVolumeUp } from "react-icons/fa";
 import { BiX } from "react-icons/bi";
 import "./styles.css";
@@ -36,18 +36,16 @@ export default function Timer({
   const [soundPlaying, setSoundPlaying] = useState(false);
   
   useAnimationFrame((deltaTime) => {
-    setSeconds(seconds - deltaTime);
-  }, playAudio, initialSeconds)
+    console.log('hasBeenTracked', hasBeenTracked);
+    if (hasBeenTracked) {  
+      setSeconds(seconds - deltaTime);
+    } else {
+      setSeconds(seconds);
+    }
+  }, [playAudio, initialSeconds, hasBeenTracked])
 
   function timer() {
     setHasBeenTracked(true);
-    const myInterval = setInterval(() => {
-      if (seconds > 0) {
-        if (seconds < 59) playAudio();
-        setSeconds(seconds - 1);
-      }
-      else clearInterval(myInterval);
-    }, 1000);
   }
 
   function playAudio() {
@@ -72,7 +70,7 @@ export default function Timer({
   }
 
   function isBossAlive() {
-    return seconds < 0;
+    return !hasBeenTracked;
   }
 
   function clearTimer() {
